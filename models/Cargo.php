@@ -28,7 +28,7 @@ class Cargo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome'], 'required'],
+            [['nome'], 'required', 'message'=>'{attribute} não pode ser vazio.'],
             [['nome'], 'string', 'max' => 255],
         ];
     }

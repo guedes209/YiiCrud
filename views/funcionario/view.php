@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\ArrayHelper;
 use app\models\Cargo;
 
 /** @var yii\web\View $this */
@@ -45,7 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'group_id',
                 'value' => function($model){
                     $cargo = Cargo::find()->all();
-                    return $cargo[$model['cargo_id'] - 1]['nome'];
+                    $cargos = ArrayHelper::map($cargo,'id', 'nome');
+                    return $cargos[$model['cargo_id']];
                 }
             ]
         ],

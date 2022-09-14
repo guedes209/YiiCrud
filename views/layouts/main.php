@@ -41,6 +41,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => '@w
         'items' => [
             ['label' => 'Crud Funcionarios', 'url' => ['/funcionario/index']],
             ['label' => 'Crud Cargo', 'url' => ['/cargo/index']],
+            ['label' => 'Produtos Mercado Livre', 'url' => ['/site/produtos']],
 
         ]
     ]);

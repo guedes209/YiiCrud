@@ -36,7 +36,7 @@ class Funcionario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'cpf', 'cargo_id'], 'required'],
+            [['nome', 'cpf', 'cargo_id'], 'required', 'message'=>'{attribute} não pode ser vazio.'],
             [['numero', 'cargo_id'], 'default', 'value' => null],
             [['numero', 'cargo_id'], 'integer'],
             [['nome', 'cpf', 'logradouro', 'cep', 'cidade', 'estado', 'complemento'], 'string', 'max' => 255],

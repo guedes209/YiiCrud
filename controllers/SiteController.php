@@ -9,6 +9,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\ProdutoML;
+use app\controllers\MLController;
 
 class SiteController extends Controller
 {
@@ -124,5 +126,17 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionProdutos()
+    {
+        $cods = ProdutoML::find()->all();
+        $data = [];
+        foreach($cods as $c) {
+            $data[] = MLController::getProdutosDados($c['codigo_ml']);
+        }
+        return $this->render('produtos', array(
+            'data' => $data,
+        ));
     }
 }

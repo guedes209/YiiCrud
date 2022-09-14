@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\bootstrap5\Alert;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
@@ -13,6 +14,24 @@ $this->title = 'Cargos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cargo-index">
+
+    <?php
+        if(isset($_GET['deleted']) && $_GET['deleted'] == 0){
+            echo Alert::widget([
+                'options' => [
+                    'class' => 'alert-danger',
+                ],
+                'body' => $_GET['message'],
+            ]);
+        } else if(isset($_GET['message'])){
+            echo Alert::widget([
+                'options' => [
+                    'class' => 'alert-success',
+                ],
+                'body' => $_GET['message'],
+            ]);
+        }
+    ?>
 
     <div style="display:flex; justify-content: space-between;">
         <h1><?= Html::encode($this->title) ?></h1>
@@ -26,7 +45,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'nome',

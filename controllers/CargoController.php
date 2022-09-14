@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Cargo;
+use app\models\Funcionario;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -121,9 +122,12 @@ class CargoController extends Controller
      */
     public function actionDelete($id)
     {
+        if(Funcionario::findOne(['cargo_id' => $id])){
+            return $this->redirect(['index', 'deleted' => false, 'message' => 'Não foi possível deletar o cargo pois ainda tem funcionários com este cargo!']);
+        }
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index', 'deleted' => true, 'message' => 'Cargo deletado com succeso']);
     }
 
     /**
