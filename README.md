@@ -1,3 +1,5 @@
+Para rodar o sistema, basta rodar o comando "composer install", aplicar as migrações em um banco já existente com o nome de acordo na pasta config/db.php e rodar a aplicação com o comando "php yii serve"
+
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
